@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: rl-from-scratch
+Version: 0.1.0
+Summary: Fundamental reinforcement learning algorithms from scratch on CartPole.
+Requires-Python: >=3.12
+License-File: LICENSE
+Requires-Dist: gymnasium[mujoco]>=1.0
+Requires-Dist: matplotlib>=3.7
+Requires-Dist: numpy>=1.24
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: tqdm>=4.67.3
+Provides-Extra: dev
+Requires-Dist: nbformat; extra == "dev"
+Requires-Dist: pre-commit>=3.7; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Dynamic: license-file

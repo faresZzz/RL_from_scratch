@@ -1,0 +1,10 @@
+gymnasium[mujoco]>=1.0
+matplotlib>=3.7
+numpy>=1.24
+PyYAML>=6.0
+tqdm>=4.67.3
+
+[dev]
+nbformat
+pre-commit>=3.7
+pytest

@@ -1,0 +1,2 @@
+[console_scripts]
+rl-train = rl_from_scratch.train:main
