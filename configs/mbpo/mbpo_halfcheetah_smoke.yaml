@@ -1,0 +1,39 @@
+approach: mbpo
+env_id: HalfCheetah-v5
+seed: 0
+
+epochs: 1
+steps_per_epoch: 10
+max_steps_per_episode: 10
+
+ensemble_size: 2
+model_hidden_dim: 16
+model_n_layers: 2
+model_lr: 0.001
+model_fit_steps: 3
+model_batch_size: 8
+weight_decay: 0.0
+
+actor_lr: 0.0003
+critic_lr: 0.0003
+tau: 0.005
+sac_hidden_dim: 16
+sac_batch_size: 8
+alpha: 0.2
+auto_tune_alpha: true
+target_entropy: null
+
+rollout_length: 1
+rollout_batch_size: 8
+rollout_every: 2
+updates_per_step: 2
+real_ratio: 0.05
+model_retain_epochs: 1
+env_buffer_capacity: 10000
+model_buffer_capacity: 10000
+num_warmup_steps: 10
+
+eval_every: 1
+eval_episodes: 1
+checkpoint_every: 1
+output_dir: runs

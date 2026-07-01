@@ -1,0 +1,47 @@
+approach: dreamer
+env_id: HalfCheetah-v5
+
+# Training schedule: epochs × steps_per_epoch total environment steps.
+epochs: 30
+steps_per_epoch: 1000
+max_steps_per_episode: 1000
+
+# ── RSSM / world-model architecture ──────────────────────────────────────────
+deter_dim: 200
+stoch_dim: 30
+rssm_hidden_dim: 200
+encoder_hidden_dim: 200
+decoder_hidden_dim: 200
+reward_hidden_dim: 200
+embed_dim: 200
+
+# ── World-model training ──────────────────────────────────────────────────────
+model_lr: 0.0006
+free_nats: 3.0
+kl_scale: 1.0
+grad_clip: 100.0
+min_std: 0.1
+
+# ── Behaviour (actor-critic in imagination) ───────────────────────────────────
+actor_hidden_dim: 256
+critic_hidden_dim: 256
+actor_lr: 0.00008
+critic_lr: 0.00008
+lambda_: 0.95
+imagination_horizon: 15
+actor_entropy: 0.0001
+
+# ── Training schedule ─────────────────────────────────────────────────────────
+batch_size: 32
+batch_length: 32
+train_every: 1
+num_warmup_steps: 1000
+buffer_capacity: 200000
+
+# ── Evaluation and checkpointing ─────────────────────────────────────────────
+eval_every_steps: 5000
+eval_episodes: 5
+checkpoint_every: 10000
+
+seed: 0
+output_dir: runs

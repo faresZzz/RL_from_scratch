@@ -1,9 +1,36 @@
 [project]
-name = "cartPole"
+name = "rl-from-scratch"
 version = "0.1.0"
-description = "Small project for OpenAI gymnasium cartPole using reinforcement learning methods"
-module = "cartpole"
+description = "Fundamental reinforcement learning algorithms from scratch on CartPole."
+requires-python = ">=3.12"
+dependencies = [
+  "gymnasium[mujoco]>=1.0",
+  "matplotlib>=3.7",
+  "numpy>=1.24",
+  "pettingzoo[classic]>=1.24",
+  "PyYAML>=6.0",
+  "torch>=2.12",
+  "tqdm>=4.67.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "nbformat",
+  "pre-commit>=3.7",
+  "pytest",
+]
+
+[project.scripts]
+rl-train = "rl_from_scratch.train:main"
 
 [build-system]
-build-backend = "flit_core.buildapi"
-requires = ["flit_core >=3.2,<4"]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+]

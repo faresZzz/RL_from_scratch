@@ -1,0 +1,40 @@
+approach: dreamer
+env_id: HalfCheetah-v5
+seed: 0
+
+epochs: 1
+steps_per_epoch: 10
+max_steps_per_episode: 10
+
+deter_dim: 16
+stoch_dim: 8
+rssm_hidden_dim: 16
+encoder_hidden_dim: 16
+decoder_hidden_dim: 16
+reward_hidden_dim: 16
+embed_dim: 16
+
+model_lr: 0.0006
+free_nats: 3.0
+kl_scale: 1.0
+grad_clip: 100.0
+min_std: 0.1
+
+actor_hidden_dim: 16
+critic_hidden_dim: 16
+actor_lr: 0.00008
+critic_lr: 0.00008
+lambda_: 0.95
+imagination_horizon: 3
+actor_entropy: 0.0001
+
+batch_size: 4
+batch_length: 5
+train_every: 1
+num_warmup_steps: 10
+buffer_capacity: 1000
+
+eval_every: 1
+eval_episodes: 1
+checkpoint_every: 1
+output_dir: runs

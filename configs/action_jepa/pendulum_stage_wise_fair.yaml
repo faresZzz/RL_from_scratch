@@ -1,0 +1,39 @@
+approach: action_jepa
+env_id: Pendulum-v1
+seed: 0
+plan_mode: goal
+goal_obs: [1.0, 0.0, 0.0]
+
+training_regime: stage-wise-fair
+freeze_encoder_after_pretrain: true
+random_frozen_encoder: false
+mask_fraction: 0.3333333333333333
+mask_noise_std: 0.01
+representation_val_every: 10
+
+latent_dim: 32
+hidden_dim: 256
+encoder_layers: 2
+ema_tau: 0.99
+predictor_delta: true
+rollout_len: 5
+lr: 0.0003
+weight_decay: 0.00001
+batch_size: 128
+num_warmup_steps: 2000
+learning_starts: 2000
+pretrain_steps: 1200
+collect_every: 100
+updates_per_collect: 25
+control_updates_per_step: 2
+plan_horizon: 12
+cem_population: 256
+cem_num_elites: 32
+cem_iterations: 4
+cem_alpha: 0.1
+episodes: 10
+max_steps_per_episode: 200
+eval_every: 1
+eval_episodes: 5
+checkpoint_every: 5
+output_dir: runs

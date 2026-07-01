@@ -1,0 +1,41 @@
+approach: pets
+env_id: HalfCheetah-v5
+
+# PETS iterations (each = 1 ensemble fit + 1 real episode with CEM planning).
+# More episodes → better model → better planning.
+episodes: 30
+max_steps_per_episode: 1000
+
+# ── Probabilistic ensemble architecture ──────────────────────────────────────
+ensemble_size: 5
+hidden_dim: 200
+n_layers: 3
+
+# ── Ensemble training ─────────────────────────────────────────────────────────
+dynamics_lr: 0.001
+dynamics_fit_steps: 100
+dynamics_batch_size: 256
+weight_decay: 0.0001
+
+# ── CEM planner ───────────────────────────────────────────────────────────────
+plan_horizon: 25
+cem_population: 400
+cem_elite_frac: 0.1
+cem_iterations: 5
+cem_alpha: 0.1
+risk_beta: 0.35
+
+# ── Trajectory sampling ───────────────────────────────────────────────────────
+n_particles: 20
+ts_mode: tsinf   # "tsinf" (fixed member per particle) or "ts1" (resample each step)
+
+# ── Warm-up (random steps before first CEM planning) ─────────────────────────
+num_warmup_steps: 1000
+
+# ── Evaluation and checkpointing schedule ────────────────────────────────────
+eval_every: 5
+eval_episodes: 3
+checkpoint_every: 10
+
+seed: 0
+output_dir: runs

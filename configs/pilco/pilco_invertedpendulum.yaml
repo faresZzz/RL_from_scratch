@@ -1,0 +1,47 @@
+approach: pilco
+env_id: InvertedPendulum-v5
+
+# Full run: same validated notebook architecture, with more real iterations.
+episodes: 30
+max_steps_per_episode: 1000
+collection_horizon: 50
+
+encode_angle: true
+fixed_horizon_steps: 50
+
+policy_type: linear_sine
+n_basis: 32
+policy_lr: 0.3
+n_initial_beliefs: 2
+cost_mode: inverted_pendulum
+terminal_penalty: 10.0
+action_cost_weight: 0.0001
+
+horizon: 60
+gp_fit_steps: 20
+policy_opt_steps: 10
+num_init_rollouts: 3
+max_gp_points: 100
+validation_fraction: 0.2
+validation_min_points: 20
+init_state_cov: 0.0001
+
+cost_weight:
+  - 0.01
+  - 100.0
+  - 1.0
+  - 0.01
+  - 2.0
+
+exploration_noise: 0.05
+
+eval_every: 1
+eval_episodes: 20
+eval_seed: 400
+checkpoint_every: 6
+solved_reward: 950
+final_eval_episodes: 20
+final_eval_seed: 900
+
+seed: 0
+output_dir: runs

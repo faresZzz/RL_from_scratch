@@ -1,0 +1,59 @@
+approach: deep_pilco
+env_id: InvertedPendulum-v5
+
+# Full run: validated notebook architecture with larger optimisation budgets.
+episodes: 50
+max_steps_per_episode: 1000
+collection_horizon: 120
+
+encode_angle: true
+# 0 = keep the env's natural early termination (mirrors notebook 10b). Classic
+# PILCO uses 50 (fixed-horizon recipe); Deep PILCO is reported honestly per §7.
+fixed_horizon_steps: 0
+
+hidden_dim: 96
+n_layers: 2
+dropout_p: 0.08
+
+n_particles: 96
+horizon: 80
+
+model_train_steps: 500
+model_batch_size: 128
+model_lr: 0.0008
+
+policy_opt_steps: 120
+policy_lr: 0.003
+
+policy_type: mlp
+policy_hidden_dim: 64
+policy_hidden_layers: 1
+n_basis: 32
+cost_mode: inverted_pendulum
+
+num_init_rollouts: 8
+max_gp_points: 2500
+validation_fraction: 0.2
+validation_min_points: 64
+
+init_state_cov: 0.0001
+
+cost_weight:
+  - 1.0
+  - 25.0
+  - 25.0
+  - 0.1
+  - 1.0
+
+exploration_noise: 0.35
+
+eval_every: 3
+eval_episodes: 20
+eval_seed: 400
+checkpoint_every: 10
+solved_reward: 950
+final_eval_episodes: 20
+final_eval_seed: 900
+
+seed: 0
+output_dir: runs

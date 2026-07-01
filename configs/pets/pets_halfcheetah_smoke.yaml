@@ -1,0 +1,31 @@
+approach: pets
+env_id: HalfCheetah-v5
+seed: 0
+
+episodes: 1
+max_steps_per_episode: 8
+
+ensemble_size: 2
+hidden_dim: 16
+n_layers: 2
+
+dynamics_lr: 0.001
+dynamics_fit_steps: 3
+dynamics_batch_size: 8
+weight_decay: 0.0
+
+plan_horizon: 4
+cem_population: 16
+cem_elite_frac: 0.2
+cem_iterations: 2
+cem_alpha: 0.3
+risk_beta: 0.35
+
+n_particles: 4
+ts_mode: tsinf
+num_warmup_steps: 10
+
+eval_every: 1
+eval_episodes: 1
+checkpoint_every: 1
+output_dir: runs

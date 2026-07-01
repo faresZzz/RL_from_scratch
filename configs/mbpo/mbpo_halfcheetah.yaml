@@ -1,0 +1,49 @@
+approach: mbpo
+env_id: HalfCheetah-v5
+
+# Training schedule: epochs × steps_per_epoch total environment steps.
+epochs: 20
+steps_per_epoch: 1000
+max_steps_per_episode: 1000
+
+# ── Probabilistic ensemble architecture ──────────────────────────────────────
+ensemble_size: 7
+model_hidden_dim: 200
+model_n_layers: 4
+
+# ── Ensemble training ─────────────────────────────────────────────────────────
+model_lr: 0.001
+model_fit_steps: 200
+model_batch_size: 256
+weight_decay: 0.0001
+
+# ── SAC policy ────────────────────────────────────────────────────────────────
+actor_lr: 0.0003
+critic_lr: 0.0003
+tau: 0.005
+sac_hidden_dim: 256
+sac_batch_size: 256
+alpha: 0.2
+auto_tune_alpha: true
+target_entropy: null
+
+# ── MBPO rollout schedule ─────────────────────────────────────────────────────
+rollout_length: 1          # Short rollouts early in training; can increase over epochs
+rollout_batch_size: 400    # Start states sampled from env buffer per rollout batch
+rollout_every: 50          # Generate rollouts every N real env steps
+updates_per_step: 20       # SAC gradient updates per real env step
+real_ratio: 0.05           # 5% real transitions in each SAC batch
+model_retain_epochs: 1
+env_buffer_capacity: 1000000
+model_buffer_capacity: 400000
+
+# ── Warm-up (random steps before first SAC policy update) ────────────────────
+num_warmup_steps: 1000
+
+# ── Evaluation and checkpointing ─────────────────────────────────────────────
+eval_every_steps: 5000
+eval_episodes: 5
+checkpoint_every: 10000
+
+seed: 0
+output_dir: runs

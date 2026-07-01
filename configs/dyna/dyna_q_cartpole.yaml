@@ -1,0 +1,21 @@
+approach: dyna_q
+env_id: CartPole-v1
+seed: 0
+episodes: 1500
+max_steps_per_episode: 500
+gamma: 0.99
+alpha: 0.1
+epsilon: 0.3
+epsilon_decay: 0.997
+min_epsilon: 0.02
+planning_steps: 50
+bins: [8, 10, 12, 12]
+cart_velocity_min: -2.5
+cart_velocity_max: 2.5
+pole_angular_velocity_min: -4.0
+pole_angular_velocity_max: 4.0
+eval_every: 50
+eval_episodes: 5
+checkpoint_every: 100
+solved_reward: 475
+output_dir: runs

@@ -1,0 +1,58 @@
+approach: deep_pilco
+env_id: InvertedPendulum-v5
+
+# Fast CLI/CI smoke: verifies BNN particles, encoded angles, and training
+# orchestration. Use the non-smoke YAMLs for actual learning runs.
+episodes: 1
+max_steps_per_episode: 50
+collection_horizon: 12
+
+encode_angle: true
+fixed_horizon_steps: 0
+
+hidden_dim: 16
+n_layers: 1
+dropout_p: 0.08
+
+n_particles: 8
+horizon: 6
+
+model_train_steps: 3
+model_batch_size: 8
+model_lr: 0.001
+
+policy_opt_steps: 2
+policy_lr: 0.01
+
+policy_type: mlp
+policy_hidden_dim: 16
+policy_hidden_layers: 1
+n_basis: 8
+cost_mode: inverted_pendulum
+
+num_init_rollouts: 1
+max_gp_points: 40
+validation_fraction: 0.0
+validation_min_points: 0
+
+init_state_cov: 0.0001
+
+cost_weight:
+  - 1.0
+  - 25.0
+  - 25.0
+  - 0.1
+  - 1.0
+
+exploration_noise: 0.0
+
+eval_every: 1
+eval_episodes: 1
+eval_seed: 400
+checkpoint_every: 1
+solved_reward: 950
+final_eval_episodes: 1
+final_eval_seed: 900
+
+seed: 0
+output_dir: runs

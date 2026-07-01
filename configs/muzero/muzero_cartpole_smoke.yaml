@@ -1,0 +1,38 @@
+approach: muzero
+env_id: CartPole-v1
+seed: 0
+
+training_steps: 8
+selfplay_episodes_per_iteration: 1
+updates_per_iteration: 2
+max_steps_per_episode: 20
+discount: 0.99
+
+encoding_dim: 8
+hidden_dim: 16
+support_size: 4
+
+num_simulations: 4
+pb_c_base: 19652
+pb_c_init: 1.25
+dirichlet_alpha: 0.25
+exploration_fraction: 0.25
+root_temperature: 1.0
+root_temperature_drop_episode: null
+
+num_unroll_steps: 3
+td_steps: 3
+batch_size: 8
+lr: 0.02
+weight_decay: 0.0001
+grad_clip: 10.0
+value_loss_weight: 0.25
+replay_capacity: 32
+num_warmup_games: 2
+two_player: false
+
+eval_every: 1
+eval_episodes: 1
+checkpoint_every: 1
+output_dir: runs
+device: cpu

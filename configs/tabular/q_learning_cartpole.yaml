@@ -1,0 +1,16 @@
+approach: q_learning
+env_id: CartPole-v1
+output_dir: runs
+run_name: q-learning-cartpole
+seed: 42
+episodes: 5000
+bins: [30, 30, 30, 30]
+alpha: 0.1
+gamma: 0.99
+epsilon: 0.2
+epsilon_decay: 0.999
+min_epsilon: 0.01
+checkpoint_keep_last: 3
+record_every: null
+render: false
+solved_reward: 475
